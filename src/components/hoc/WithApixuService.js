@@ -1,19 +1,19 @@
 import React from 'react'
-import { OpenWeatherMapServiceConsumer } from "../OpenWeatherMapServiceContext";
+import { ApixuServiceConsumer } from "../ApixuServiceContext";
 
-const WithOpenWeatherMapService = () => (Wrapped) => {
+const WithApixuService = () => (Wrapped) => {
 
     return (props) => {
         return (
-            <OpenWeatherMapServiceConsumer>
+            <ApixuServiceConsumer>
                 {(openWeatherMapService) => {
                     return <Wrapped {...props} openWeatherMapService={openWeatherMapService} />
                 }}
-            </OpenWeatherMapServiceConsumer>
+            </ApixuServiceConsumer>
         )
     }
 }
 
 export {
-    WithOpenWeatherMapService
+    WithApixuService
 }

@@ -5,21 +5,21 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import App from './components/App'
 import ErrorBountry from './components/ErrorBoundry'
-import OpenWeatherMapService from './services/openWeatherMap-service'
-import { OpenWeatherMapServiceProvider } from "./components/OpenWeatherMapServiceContext";
+import ApixuService from './services/apixu-service'
+import { ApixuServiceProvider } from "./components/ApixuServiceContext";
 
 import store from './store'
 
-const openWeatherMapService = new OpenWeatherMapService()
+const apixuService = new ApixuService()
 
 ReactDOM.render(
     <Provider store={store}>
         <ErrorBountry>
-            <OpenWeatherMapServiceProvider value={openWeatherMapService}>
+            <ApixuServiceProvider value={apixuService}>
                 <Router>
                     <App />
                 </Router>
-            </OpenWeatherMapServiceProvider>
+            </ApixuServiceProvider>
         </ErrorBountry>
     </Provider>,
     document.getElementById('root')

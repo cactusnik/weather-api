@@ -1,4 +1,4 @@
-import WithOpenWeatherMapService from './WithOpenWeatherMapService'
+import WithOpenWeatherMapService from './WithApixuService'
 
 export {
     WithOpenWeatherMapService
