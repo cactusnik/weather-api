@@ -1,8 +1,14 @@
 import React from 'react'
 
+import InputSearch from '../InputSearch'
+import ForecastForToday from '../ForecastForToday'
+
 const HomePage = () => {
     return (
-        <div>Home page</div>
+        <div>
+            <InputSearch />
+            <ForecastForToday />
+        </div>
     )
 }
 

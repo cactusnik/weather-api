@@ -1,10 +1,26 @@
-const cityLoaded = (cityId) => {
+const fetchCityRequest = () => {
     return {
-        type: 'CITY_LOADED',
-        payload: cityId
+        type: 'FETCH_CITY_REQUEST'
     }
 }
 
+const fetchCitySuccess = (city) => {
+    return {
+        type: 'FETCH_CITY_SUCCESS',
+        payload: city
+    }
+}
+
+const fetchCityFailure = (err) => {
+    return {
+        type: 'FETCH_CITY_FAILURE',
+        payload: err
+    }
+}
+
+
 export {
-    cityLoaded
+    fetchCityRequest,
+    fetchCitySuccess,
+    fetchCityFailure
 }

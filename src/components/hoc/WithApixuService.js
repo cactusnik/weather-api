@@ -6,14 +6,12 @@ const WithApixuService = () => (Wrapped) => {
     return (props) => {
         return (
             <ApixuServiceConsumer>
-                {(openWeatherMapService) => {
-                    return <Wrapped {...props} openWeatherMapService={openWeatherMapService} />
+                {(apixuService) => {
+                    return <Wrapped {...props} apixuService={apixuService} />
                 }}
             </ApixuServiceConsumer>
         )
     }
 }
 
-export {
-    WithApixuService
-}
+export default WithApixuService

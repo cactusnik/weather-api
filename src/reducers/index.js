@@ -1,13 +1,35 @@
 const initialState = {
     cities: [],
-    currentCityId: null
+    currentCityName: null,
+    lastCities: [],
+    loading: false,
+    error: null
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'CITY_LOADED':
+        case 'FETCH_CITY_REQUEST':
             return {
-                cities: action.payload
+                ...state,
+                loading: true,
+                error: null
+            }
+        case 'FETCH_CITY_SUCCESS':
+            return {
+                ...state,
+                cities: [
+                    ...state.cities,
+                    action.payload
+                ],
+                currentCityName: action.payload.name,
+                loading: false,
+                error: null
+            }
+        case 'FETCH_CITY_FAILURE':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
             }
         default:
             return state
