@@ -21,28 +21,27 @@ export default class ApixuService {
 
     transformForecast = (data) => {
         return {
-            ...this.transformLocation(data.location),
+            city: data.location.name,
+            country: data.location.country,
             forecast: {
                 ...data.forecast.forecastday.map(this.transformForecastDay)
             }
         }
     }
 
-    transformLocation = ({country, name}) => {
+    transformForecastDay = ({day, astro, date}) => {
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         return {
-            country,
-            name
-        }
-    }
-
-    transformForecastDay = ({day}) => {
-        return {
-            avghumidity: day.avghumidity,
-            avgTemp: day.avgtemp_c,
-            maxtemp: day.maxtemp_c,
-            mintemp: day.mintemp_c,
+            week: dayNames[new Date(date).getDay()],
+            date: date,
             icon: day.condition.icon,
-            text: day.condition.text
+            temp: Math.round(day.avgtemp_c),
+            details: {
+                current: day.condition.text,
+                wind: `${day.maxwind_kph} km/h`,
+                sunrise: astro.sunrise,
+                sunset: astro.sunset
+            }
         }
     }
 }

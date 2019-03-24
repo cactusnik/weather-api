@@ -5,15 +5,15 @@ import {
     ForecastWeek
 } from "./StyledForecastItem";
 
-const ForecastItem = ({ week = 'MO', avgTemp = 17, icon, maxtemp, mintemp, text, color }) => {
+const ForecastItem = ({ week, temp , icon, details, color }) => {
     return (
         <StyledForecastItem color={color}>
             <ForecastWeek>{week}</ForecastWeek>
-            <ForecastAvg>{avgTemp}</ForecastAvg>
+            <ForecastAvg>{temp}°C</ForecastAvg>
             <div className="forecast__wrap-img">
-                <img src={icon} alt={text}/>
+                <img src={icon} alt={details['current']}/>
             </div>
-            <span className="forecast__more">{text}</span>
+            <span className="forecast__more">{details['current']}</span>
         </StyledForecastItem>
     )
 }

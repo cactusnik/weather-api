@@ -3,20 +3,26 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import ForecastList from '../ForecastList'
+import {
+    Page,
+    Container
+} from "./StyledHomePage";
 
 const Forecast = ({city: { forecast = [] } = {} }) => {
     return (
-        <>
-            <Link to='/'>Back to Home page</Link>
-            <ForecastList {...forecast} />
-        </>
+        <Page>
+            <Container>
+                <Link to='/'>Back to Home page</Link>
+                <ForecastList {...forecast} />
+            </Container>
+        </Page>
     )
 }
 
 const mapStateToProps = ({cities, currentCityName}) => {
     return {
         city: cities.find((city) => {
-            return city.name === currentCityName
+            return city.city === currentCityName
         })
     }
 }

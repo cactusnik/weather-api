@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const StyledForecastItem = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,12 +10,14 @@ const StyledForecastItem = styled.div`
 `
 
 const ForecastWeek = styled.h2`
+  margin-bottom: 35px;
   font-size: 1.25rem;
   text-transform: uppercase;
 `
 
 const ForecastAvg = styled.span`
   font-size: 2rem;
+  margin-bottom: 50px;
 `
 
 export {

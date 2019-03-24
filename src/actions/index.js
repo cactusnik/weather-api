@@ -18,9 +18,17 @@ const fetchCityFailure = (err) => {
     }
 }
 
+const setActiveCity = (city) => {
+    return {
+        type: 'SET_CURRENT_CITY',
+        payload: city
+    }
+}
+
 
 export {
     fetchCityRequest,
     fetchCitySuccess,
-    fetchCityFailure
+    fetchCityFailure,
+    setActiveCity
 }

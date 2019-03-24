@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { WithApixuService } from '../hoc'
-
+import {
+    Form,
+    Input,
+    Submit
+} from "./StyledInputSearch";
 import {
     fetchCityRequest,
     fetchCitySuccess,
-    fetchCityFailure
+    fetchCityFailure,
+    setActiveCity
 } from "../../actions";
 
 class InputSearch extends Component {
@@ -24,29 +29,40 @@ class InputSearch extends Component {
     }
 
     handleSubmit = (e) => {
-        const { fetchCityRequest, fetchCitySuccess, fetchCityFailure } = this.props
         e.preventDefault()
-        fetchCityRequest()
-        this.props.apixuService.getForecast(this.state.temp)
-            .then((data) => {
-                console.log(data)
-                fetchCitySuccess(data)
-            })
-            .catch((err) => {
-                fetchCityFailure(err)
-            })
+
+        const { fetchCityRequest, fetchCitySuccess, fetchCityFailure, setActiveCity, cities } = this.props
+
+        const city = cities.find((city) => {
+            return city.city.toLowerCase() === this.state.temp.toLowerCase()
+        })
+
+        if (city) {
+            setActiveCity(this.state.temp)
+        } else {
+            fetchCityRequest()
+
+            this.props.apixuService.getForecast(this.state.temp)
+                .then((data) => {
+                    fetchCitySuccess(data)
+                })
+                .catch((err) => {
+                    fetchCityFailure(err)
+                })
+        }
     }
 
     render () {
         const { temp } = this.state
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input
+            <Form onSubmit={this.handleSubmit}>
+                <Input
                     type="text"
                     value={temp}
                     onChange={this.handleChange}
                 />
-            </form>
+                <Submit type="submit" value="search" />
+            </Form>
         )
     }
 }
@@ -58,7 +74,8 @@ const mapStateToProps = ({cities}) => {
 const mapDispatchToProps = {
     fetchCityRequest,
     fetchCitySuccess,
-    fetchCityFailure
+    fetchCityFailure,
+    setActiveCity
 }
 
 export default WithApixuService()(connect(mapStateToProps, mapDispatchToProps)(InputSearch))
