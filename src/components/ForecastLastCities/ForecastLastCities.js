@@ -1,17 +1,22 @@
 import React from 'react'
 import { connect } from "react-redux";
+
 import { setActiveCity } from "../../actions";
+import {
+    ForecastLastCitiesList,
+    ForecastLastCitiesItem
+} from "./StyledForecastLastCities";
 
 const ForecastLastCities = ({cities = [], setActiveCity}) => {
 
     const items = cities.map(item => {
-        return <span key={item} onClick={() => setActiveCity(item)}>{item}</span>
+        return <ForecastLastCitiesItem key={item} onClick={() => setActiveCity(item)}>{item}</ForecastLastCitiesItem>
     })
 
     return (
-        <>
+        <ForecastLastCitiesList>
             {items}
-        </>
+        </ForecastLastCitiesList>
     )
 }
 

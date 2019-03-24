@@ -45,6 +45,9 @@ class InputSearch extends Component {
             this.props.apixuService.getForecast(this.state.temp)
                 .then((data) => {
                     fetchCitySuccess(data)
+                    this.setState({
+                        temp: ''
+                    })
                 })
                 .catch((err) => {
                     fetchCityFailure(err)
@@ -60,6 +63,7 @@ class InputSearch extends Component {
                     type="text"
                     value={temp}
                     onChange={this.handleChange}
+                    placeholder="Enter city ..."
                 />
                 <Submit type="submit" value="search" />
             </Form>
@@ -67,7 +71,7 @@ class InputSearch extends Component {
     }
 }
 
-const mapStateToProps = ({cities}) => {
+const mapStateToProps = ({ cities }) => {
     return { cities }
 }
 

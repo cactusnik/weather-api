@@ -1,8 +1,18 @@
 import React from 'react'
+import { SpinnerContainer } from "./StyledSpinner";
 
 const Spinner = () => {
     return (
-        <div>Loading ... </div>
+        <div className="lds-css ng-scope">
+            <SpinnerContainer className="lds-magnify">
+                <div>
+                    <div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </SpinnerContainer>
+        </div>
     )
 }
 

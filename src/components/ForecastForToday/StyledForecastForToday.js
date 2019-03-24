@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const ForecastContainer = styled.div`
   display: flex;
   padding: 20px 15px;
+  margin-bottom: 10px;
   border: 1px solid #1d92bf;
 `
 
@@ -45,7 +46,10 @@ const ForecastList = styled.ul`
 `
 
 const ForecastItem = styled.li`
-  margin-bottom: 10px;
+  
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
 `
 
 const ForecastKey = styled.span`
@@ -62,5 +66,6 @@ export {
     ForecastList,
     ForecastKey,
     ForecastLeft,
-    ForecastIcon
+    ForecastIcon,
+    ForecastItem
 }

@@ -5,6 +5,7 @@ const StyledForecastItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 0;
   background-color: ${props => props.color || '#47d9d1'};
   color: #ffffff;
 `
@@ -20,8 +21,19 @@ const ForecastAvg = styled.span`
   margin-bottom: 50px;
 `
 
+const ForecastImg = styled.div`
+  margin-bottom: 50px;
+`
+
+const ForecastText = styled.span`
+  text-align: center;
+  padding: 0 5px;
+`
+
 export {
     StyledForecastItem,
     ForecastWeek,
-    ForecastAvg
+    ForecastAvg,
+    ForecastImg,
+    ForecastText
 }

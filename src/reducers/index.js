@@ -13,7 +13,9 @@ const updateLastCities = (list, city) => {
 
     if (itemIndex !== -1) {
         return [
-            ...list
+            ...list.slice(0, itemIndex),
+            ...list.slice(itemIndex + 1),
+            city
         ]
     } else {
         return [
@@ -42,7 +44,7 @@ const reducer = (state = initialState, action) => {
                 lastCities: [
                     ...state.lastCities,
                     action.payload.city
-                ],
+                ].slice(-5),
                 loading: false,
                 error: null
             }

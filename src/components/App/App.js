@@ -11,6 +11,7 @@ const App = () => {
             <Switch>
                 <Route exact path="/" render={() => <HomePage/>}/>
                 <Route path="/details" render={() => <ForecastDetails/>}/>
+                <Route render={() => <h1>Page no found</h1>} />
             </Switch>
         </>
     )

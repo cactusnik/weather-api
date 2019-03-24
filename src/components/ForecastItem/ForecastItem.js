@@ -2,7 +2,9 @@ import React from 'react'
 import {
     StyledForecastItem,
     ForecastAvg,
-    ForecastWeek
+    ForecastWeek,
+    ForecastImg,
+    ForecastText
 } from "./StyledForecastItem";
 
 const ForecastItem = ({ week, temp , icon, details, color }) => {
@@ -10,10 +12,10 @@ const ForecastItem = ({ week, temp , icon, details, color }) => {
         <StyledForecastItem color={color}>
             <ForecastWeek>{week}</ForecastWeek>
             <ForecastAvg>{temp}°C</ForecastAvg>
-            <div className="forecast__wrap-img">
+            <ForecastImg>
                 <img src={icon} alt={details['current']}/>
-            </div>
-            <span className="forecast__more">{details['current']}</span>
+            </ForecastImg>
+            <ForecastText>{details['current']}</ForecastText>
         </StyledForecastItem>
     )
 }
