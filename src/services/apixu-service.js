@@ -15,7 +15,6 @@ export default class ApixuService {
 
     getForecast = async (cityName, days = 7) => {
         const res = await this.getResource(`/forecast.json?key=${this.key}=${cityName}&days=${days}`)
-        console.log(res)
         return this.transformForecast(res)
     }
 
